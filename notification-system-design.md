@@ -148,3 +148,10 @@ SELECT student_id, student_name, notification_date
 FROM placement_notifications
 WHERE notification_date >= CURRENT_DATE - INTERVAL '7 days' AND notification_type == "Placement"
 ORDER BY notification_date DESC;
+
+
+# Stage 4
+(1) Identify the bottlenecks
+(2) Kill runaway queries and add a limit.
+(3) Clean up data and optimize the schema
+(4) Scale your software both vertically and horizontally
