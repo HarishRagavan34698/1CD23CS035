@@ -136,3 +136,15 @@ I would suggest a structured DB since it makes sure the data you enter into it i
 <tr><td>PUT</td> <td>Update data</td> <td>UPDATE users SET name = 'Bob' WHERE id = 1;</td></tr>
 <tr><td>DELETE</td> <td>Remove data</td> <td>DELETE FROM users WHERE id = 1;</td></tr>
 </table>
+
+
+
+# Stage 3
+It's accurate but will perform slowly due to the fact that it has to go through the entire database.It would be around 5,050,000 approx. You can create index but on every column will slow you down, so just limit it to the most frequent columns. 
+
+## SQL query
+
+SELECT student_id, student_name, notification_date
+FROM placement_notifications
+WHERE notification_date >= CURRENT_DATE - INTERVAL '7 days' AND notification_type == "Placement"
+ORDER BY notification_date DESC;
