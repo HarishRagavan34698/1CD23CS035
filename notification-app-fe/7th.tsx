@@ -64,7 +64,3 @@ app.post('/api/notifications', (req: Request, res: Response) => {
     received: req.body 
   });
 });
-
-app.listen(PORT, () => {
-  console.log(`🚀 Notification server running at http://localhost:${PORT}`);
-});
