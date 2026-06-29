@@ -2,9 +2,9 @@ import express, { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
 
 export interface LogNotification {
-  stack: string;
+  stack: 'frontend' | 'backend';
   level: 'error' | 'warn' | 'info';
-  package: string;
+  package: 'auth'|'config'|'middleware'|'utils';
   message: string;
 }
 
