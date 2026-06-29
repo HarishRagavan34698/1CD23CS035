@@ -180,14 +180,11 @@ public class Main {\
             .thenComparing(Element::result, Comparator.reverseOrder())\
             .thenComparing(Element::event, Comparator.reverseOrder())\
             .thenComparing(Element::recency, Comparator.reverseOrder());\
-
         PriorityQueue<Element> pq = new PriorityQueue<>(weight);\
-
         Instant now = Instant.now();\
         pq.add(new Element("A", 2, 90, 5, now));\
         pq.add(new Element("B", 1, 80, 5, now));\
         pq.add(new Element("C", 1, 80, 5, now.plusSeconds(10)));\
-
         while (!pq.isEmpty()) System.out.println(pq.poll().id());\
     }\
 }\
