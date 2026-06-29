@@ -121,6 +121,18 @@ JSON header
 
 ## Real-time notification system
 
-(1) Client(Frontend):- It will connect to the server and authenticates the request.
-(2) Server(Backend):- Manages all open sockets and routes and reallocates according to needs and pushes data payloads.
-(3) Trigger(Database):- It simulates a system notification that fires when required.
+(1) Client(Frontend):- It will connect to the server and authenticates the request.  
+(2) Server(Backend):- Manages all open sockets and routes and reallocates according to needs and pushes data payloads.  
+(3) Trigger(Database):- It simulates a system notification that fires when required.  
+
+
+# Stage 2
+I would suggest a structured DB since it makes sure the data you enter into it is formatted. So SQL is preffered. If data is increased the most probably are High Memory costs, Slow query performance, and concurrency. We must optimize queries to make sure they run fast, break large tables into manageable ranges and keep a separate storage for old inactive data compared to new ones.
+
+<table>
+<tr><th>HTTP MethodAPI ActionCorresponding SQL Query </th></tr>
+<tr>GETRead dataSELECT * FROM users WHERE id = 1;</tr>
+<tr>POSTCreate dataINSERT INTO users (name) VALUES ('Alice');</tr>
+<tr>PUT / PATCHUpdate dataUPDATE users SET name = 'Bob' WHERE id = 1;</tr>
+<tr>DELETERemove dataDELETE FROM users WHERE id = 1;</tr>
+</table>
