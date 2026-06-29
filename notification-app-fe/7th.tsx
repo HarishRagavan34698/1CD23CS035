@@ -34,9 +34,9 @@ export function notificationLoggingMiddleware(
 
   if (isNew) {
     viewedNotifications.add(notificationHash);
-    console.log(`\n[${timestamp}] 🔴 [NEW NOTIFICATION]`);
+    console.log(`\n[${timestamp}] [NEW NOTIFICATION]`);
   } else {
-    console.log(`\n[${timestamp}] 👁️  [ALREADY VIEWED]`);
+    console.log(`\n[${timestamp}] [ALREADY VIEWED]`);
   }
 
 
