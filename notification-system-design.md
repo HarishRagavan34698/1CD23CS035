@@ -155,3 +155,13 @@ ORDER BY notification_date DESC;
 (2) Kill runaway queries and add a limit.
 (3) Clean up data and optimize the schema
 (4) Scale your software both vertically and horizontally
+
+# Stage 5
+Saving and sending must occur together cause if not then might see that all are sent but only some are stored/ all are stored and only some are sent, the records won't match. I would do both together and only go to the 3rd is it is succesfully sent and saves to all. I will maintain a count variable.
+
+function notify_all(student_ids: array, message: string):
+ for student_id in student_ids:
+  send_and_save_email(student_id,message)
+  if(count==50,000)
+   push_to_app(student_id,message)
+
