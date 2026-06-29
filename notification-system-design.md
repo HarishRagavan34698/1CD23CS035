@@ -165,3 +165,30 @@ function notify_all(student_ids: array, message: string):\
   if(count==50,000)\
    push_to_app(student_id,message)
 
+# Stage 6
+
+import java.time.Instant;\
+import java.util.*\
+
+record Element(String id, int placement, int result, int event, Instant recency) {}\
+
+public class Main {\
+    public static void main(String[] args) {\
+        // Comparator chained exactly by weight hierarchy\
+        Comparator<Element> weight = Comparator\
+            .comparingInt(Element::placement)\
+            .thenComparing(Element::result, Comparator.reverseOrder())\
+            .thenComparing(Element::event, Comparator.reverseOrder())\
+            .thenComparing(Element::recency, Comparator.reverseOrder());\
+
+        PriorityQueue<Element> pq = new PriorityQueue<>(weight);\
+
+        Instant now = Instant.now();\
+        pq.add(new Element("A", 2, 90, 5, now));\
+        pq.add(new Element("B", 1, 80, 5, now));\
+        pq.add(new Element("C", 1, 80, 5, now.plusSeconds(10)));\
+
+        while (!pq.isEmpty()) System.out.println(pq.poll().id());\
+    }\
+}\
+
